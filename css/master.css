@@ -1,3 +1,38 @@
 * {
-  background-image: '../images/mouse.jpg'
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 25px;
+}
+
+body {
+  background-image: url("../images/mouse.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.header {
+  margin-top: 1.5vw;
+}
+
+.intro {
+  line-height: 30px;
+  margin-bottom: 45px;
+  margin-top: 10vw;
+}
+
+.huge {
+  display: inline;
+  font-size: 45px;
+  margin-bottom: 0px;
+  margin-left: 45px;
+  padding-bottom: 0px;
+}
+
+.intro-cont {
+  line-height: 30px;
+}
+
+.black {
+  background-color: black;
+  color: white;
+  padding: 90px 0px;
 }

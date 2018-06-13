@@ -2,15 +2,31 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Machine Learning & Games: Using Mouse Movement To Predict Game Genre</title>
+    <title>Machine Learning & Video Games</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito+Sans">
+    <link rel="stylesheet" href="/css/master.css">
   </head>
-  <body class="col-md-8-offset-2 text-center">
-    <h1>Machine Learning & Games: Using Mouse Movement To Predict Game Genre</h1>
-    <h3>Yoonsang Chong</h3>
-    <h5>yoonsangchong2016@u.northwestern.edu</h5>
-    <h5>Northwestern University EECS 349</h5>
+  <body>
 
-    
+    <div class="col-md-5 col-md-offset-1 text-right header">
+      <h1>Machine Learning & Video Games:</h1>
+      <h2>Using Mouse Movement To Predict Game Genre</h2>
+      <br>
+      <h3>Yoonsang Chong</h3>
+      <h4>yoonsangchong2016@u.northwestern.edu</h4>
+      <h4>Northwestern University EECS 349</h4>
+    </div>
+
+    <div class="col-md-8 col-md-offset-3 intro">
+      <p><div class="huge">C</div>an a machine tell what type of game a person is playing, just given a visual representation of their in-game mouse movements? If so, it could signify a new avenue for gaming mouse software developers to explore, where a mouse can interact with a gamer with the same personalization and usefulness as other types of modern “smart” technology. An obvious initial usage would be for a mouse to automatically adjust its sensitivity as its user switches between different games, or between gaming and not gaming. This would enable seamless transitions between activities, and take the manual work off of users’ hands. But the possibilities go much beyond that; using movements to analyze play style, we might be able to help recommend games of similar "activeness," pinpoint specific areas for players to improve their skills, or offer developers a tool to assist them design gameplay mechanics and systems that reach their target audience.</p>
+    </div>
+
+    <div class="col-md-12 intro-cont black">
+      <div class="col-md-5 col-md-offset-1">
+        <p>The initial hurdle to answering this question lay in which machine learning algorithm to use. Luckily in the case of image classification, there is a popular choice, and for good reason: convolutional neural nets have been proven to be quite effective at recognizing patterns in images, even if the images at first may seem very different in terms of their underlying representation. So, they should have no problem dealing with data on mouse movements, where all the inputs have been preprocessed to a 2560x1440 resolution. The idea is to translate the images into 3-dimensional arrays of RGB values, then feed them into a convolutional neural network designed to output its prediction of the images' labels.</p>
+      </div>
+    </div>
+
   </body>
 </html>
