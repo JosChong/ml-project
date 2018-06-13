@@ -1,38 +1,58 @@
 * {
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 25px;
+  font-size: 1.2vw;
+  line-height: 1.5vw;
 }
 
 body {
-  background-image: url("../images/mouse.jpg");
+  background-image: url('../images/mouse-title.png');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 .header {
-  margin-top: 1.5vw;
+  display: none;
+  margin-top: 2.4vw;
 }
 
 .intro {
-  line-height: 30px;
-  margin-bottom: 45px;
-  margin-top: 10vw;
+  margin-bottom: 2vw;
+  margin-top: 25vw;
 }
 
 .huge {
   display: inline;
-  font-size: 45px;
-  margin-bottom: 0px;
-  margin-left: 45px;
-  padding-bottom: 0px;
-}
-
-.intro-cont {
-  line-height: 30px;
+  font-size: 2vw;
+  margin-left: 2vw;
 }
 
 .black {
   background-color: black;
   color: white;
-  padding: 90px 0px;
+  padding: 3vw 0px;
+}
+
+.img {
+  margin-top: 6vw;
+  width: 100%;
+}
+
+.caption {
+  color: lightgrey;
+  font-size: 1vw;
+  margin-top: 0.5vw;
+}
+
+.pad {
+  background-image: url('../images/mousepad-title.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 1000px;
+}
+
+.analysis {
+  display: none;
+  font-size: 8vw;
+  line-height: 10vw;
+  margin-top: 5vw;
 }
