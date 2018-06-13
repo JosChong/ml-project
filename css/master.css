@@ -44,10 +44,7 @@ body {
 }
 
 .pad {
-  background-image: url('../images/mousepad-title.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  min-height: 1000px;
+  width: 100%;
 }
 
 .analysis {
