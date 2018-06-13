@@ -18,13 +18,13 @@
     </div>
 
     <div class="col-md-8 col-md-offset-3 intro">
-      <p><div class="huge">C</div>an a machine tell what type of game a person is playing, just given a visual representation of their in-game mouse movements? If so, it could signify a new avenue for gaming mouse software developers to explore, where a mouse can interact with a gamer with the same personalization and usefulness as other types of modern “smart” technology. An obvious initial usage would be for a mouse to automatically adjust its sensitivity as its user switches between different games, or between gaming and not gaming. This would enable seamless transitions between activities, and take the manual work off of users’ hands. But the possibilities go much beyond that; using movements to analyze play style, we might be able to help recommend games of similar "activeness," pinpoint specific areas for players to improve their skills, or offer developers a tool to assist them design gameplay mechanics and systems that reach their target audience.</p>
+      <p><div class="tab">C</div>an a machine tell what type of game a person is playing, just given a visual representation of their in-game mouse movements? If so, it could signify a new avenue for gaming mouse software developers to explore, where a mouse can interact with a gamer with the same personalization and usefulness as other types of modern “smart” technology. An obvious initial usage would be for a mouse to automatically adjust its sensitivity as its user switches between different games, or between gaming and not gaming. This would enable seamless transitions between activities, and take the manual work off of users’ hands. But the possibilities go much beyond that; using movements to analyze play style, we might be able to help recommend games of similar "activeness," pinpoint specific areas for players to improve their skills, or offer developers a tool to assist them design gameplay mechanics and systems that reach their target audience.</p>
     </div>
 
     <div class="col-md-12 black">
       <div class="col-md-5 col-md-offset-1">
-        <p><div class="huge"></div>The initial hurdle to answering this question lay in which machine learning algorithm to use. Luckily, in the case of image classification, there is a popular option and for good reason: convolutional neural nets have been proven to be quite effective at recognizing patterns in images, even if the images at first may seem very different in terms of their underlying machine representation. The idea is to translate the images into 3-dimensional arrays of RGB values, then feed them into a convolutional neural network designed to output predictions of the images' labels.</p>
-        <p><div class="huge"></div>The resulting trained model turned out to be more effective than expected. When training on the three main genres of games on which data was collected (FPS, RTS, and card games), the network was capable of achieving near 100% accuracy in the task of distinguishing a particular genre from others with only several tens of examples. With some tuning of parameters, a near instant perfect accuracy could be achieved. However, a weakness of the model, or perhaps an oversight with regards to the task in general, arose when comparing other portions of the collected data. Certain genres, although strikingly different in gameplay, share almost identical patterns of movement, and the limited scope of the data prevented a further investigation into whether or not they could be classified effectively by a CNN.</p>
+        <p><div class="tab"></div>The initial hurdle to answering this question lay in which machine learning algorithm to use. Luckily, in the case of image classification, there is a popular option and for good reason: convolutional neural nets have been proven to be quite effective at recognizing patterns in images, even if the images at first may seem very different in terms of their underlying machine representation. The idea is to translate the images into 3-dimensional arrays of RGB values, then feed them into a convolutional neural network designed to output predictions of the images' labels.</p>
+        <p><div class="tab"></div>The resulting trained model turned out to be more effective than expected. When training on the three main genres of games on which data was collected (FPS, RTS, and card games), the network was capable of achieving near 100% accuracy in the task of distinguishing a particular genre from others with only several tens of examples. With some tuning of parameters, a near instant perfect accuracy could be achieved. However, a weakness of the model, or perhaps an oversight with regards to the task in general, arose when comparing other portions of the collected data. Certain genres, although strikingly different in gameplay, share almost identical patterns of movement, and the limited scope of the data prevented a further investigation into whether or not they could be classified effectively by a CNN.</p>
       </div>
       <div class="col-md-4 col-md-offset-1 text-center">
         <img class="img" src="images/example.png">
@@ -38,5 +38,15 @@
         <p class="analysis">In Depth<br>Analysis</p>
       </div>
     </div>
+
+    <div class="col-md-12 black">
+      <div class="col-md-5 col-md-offset-1 text-center">
+        <p class="section-title">DATASET</p>
+      </div>
+      <div class="col-md-5">
+        <p><div class="tab"></div>The dataset is comprised of 400</p>
+      </div>
+    </div>
+
   </body>
 </html>
