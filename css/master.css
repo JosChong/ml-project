@@ -83,6 +83,6 @@ body {
   width: calc(100% - 3vw);
 }
 
-.plus {
-  margin-top: 8vw;
+.minus {
+  margin-top: 4vw;
 }

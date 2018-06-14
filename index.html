@@ -108,37 +108,103 @@
 
       <div class="col-md-12">
         <div class="col-md-5 col-md-offset-1">
-          <p><div class="tab"></div>The biggest concern with regards to this task was potentially not having a large enough dataset to train an effective model. However, as noted, this was hardly the case. Using a convolutional neural network with 3 convolutional layers, 3 pooling layers, and 2 fully connected layers between the inputs and output layer (not counting dropout and flattening layers), and utilizing batch gradient descent with a batch size of 10 examples and a step size also of 10 (the number of forward and backprop driven gradient update cycles per batch) over 100 iterations, the model can achieve over 95% validation accuracy off usually just a single batch.</p>
+          <p><div class="tab"></div>Originally, the biggest concern with regards to this task was potentially not having a large enough dataset to train an effective model. However, as noted, this was hardly the case. Using a convolutional neural network with 1 convolution layer, 1 pooling layers, and 1 fully connected layer between the inputs and output layer (not counting dropout and flattening layers), and utilizing batch gradient descent with a batch size of 10 examples and a step size also of 10 (the number of forward and backprop driven gradient update cycles per batch) over 50 iterations, the model can achieve over 95% validation accuracy off usually just a single batch. These fairly straightforward parameters for the model given the size and nature of the data seem to enable quick learning behavior, even with just a small number of examples.</p>
         </div>
         <div class="col-md-5">
-          <p><div class="tab"></div>These fairly straightforward parameters for the model given the size and nature of the data seem to enable quick learning behavior, even with just a small number of examples. The stark differences between the focused genres are more effectively perceived and utilized by the algorithm than predicted, and this can be seen in the following graphs, which depict the growth of the model when training with different parameter configurations. The graphs are followed by a breakdown of some of these tunable facets of the model and their impact on the accuracy of the final result.</p>
+          <p><div class="tab"></div>The stark differences between the mouse patterns of the focused genres are more effectively perceived and utilized by the algorithm than predicted, and this can be seen in the following graphs, which depict the growth of the model when training with various parameter configurations. Although using multiple example and multiple-step batch gradient descent trains the model more efficiently, the growth of the network's capabilities can be better observed when restricting the rate at which it can learn by using single-step descent on single example batches, which then allows one to better gauge the impact of changing other parameters. Even with this limitation, the network can still achieve 100% accuracy in the relatively short amount of time of about 30 to 40 iterations. The graphs are followed by a breakdown of some of the model's tunable parameters and their impact on the accuracy of the final result.</p>
         </div>
       </div>
 
-      <div class="col-md-3 text-center">
-
+      <div class="col-md-10 col-md-offset-1 minus">
+        <div class="col-md-4 text-center">
+          <img src="images/acc0.jpg">
+        </div>
+        <div class="col-md-4 text-center">
+          <img src="images/acc1.jpg">
+        </div>
+        <div class="col-md-4 text-center">
+          <img src="images/acc2.jpg">
+        </div>
       </div>
-      <div class="col-md-3 text-center">
 
-      </div>
-      <div class="col-md-3 text-center">
-
-      </div>
-      <div class="col-md-3 text-center">
-
-      </div>
-
-      <div class="col-md-3 text-center">
-
-      </div>
-      <div class="col-md-3 text-center">
-
-      </div>
-      <div class="col-md-3 text-center">
-
-      </div>
-      <div class="col-md-3 text-center">
-
+      <div class="col-md-10 col-md-offset-1 minus">
+        <div class="col-md-3 text-center">
+          <h1>Batch Size</h1>
+          <p>This parameter indicates the number of training examples used in each round of batch gradient descent. Ideally, a larger batch is better, as the "noise" of singular data examples can lead to erroneous learning. However, too large a batch size can also hurt accuracy, as the learning may not be well generalized. A batch size of 10, smaller than the standard sizes of 32 or 64, proved to be a workable size to calculate accurate gradients and train an effective model in this case, although its impact on anything outside of convergence speed is difficult to discern.</p>
+        </div>
+        <div class="col-md-3 text-center">
+          <h1>Iterations & Steps</h1>
+          <p>These parameters are tied with batch size and each other. While the number of iterations determines how many batches will be used to train, the step chooses how many times the gradient of each batch is run through the network, like a learning rate for batches or batch gradients. However, for this task, these values are not too significant as the model does not require a lot of data to achieve high predictive success anyway. Using a step size of 1 instead of 10, for example, increases the number of batches required to achieve 100% validation accuracy, but doesn't affect the accuracy of the calculated gradients. So, unlike using a batch size of 1, it doesn't seem to affect the precision of the learning process so much as the efficiency.</p>
+        </div>
+        <div class="col-md-3 text-center">
+          <h1>Learning Rate</h1>
+          <p>The learning rate indicates how much significance the model assigns to the calculated batch gradients when using them to adjust its internal weights. The value of this parameter has a large effect on the model's success, as too high a value causes the network to attribute too much importance to new training examples, making it volatile and susceptible to outlier examples, while too low a value leaves the model unable to effectively learn from the data at all. The following table shows how many iterations of single example single-step optimization iterations are required to achieve 100% accuracy given a specific learning rate:</p>
+          <table align="center">
+            <tr>
+              <th>LR</th>
+              <th># Iters</th>
+            </tr>
+            <tr>
+              <td>1e-1</td>
+              <td>–</td>
+            </tr>
+            <tr>
+              <td>1e-2</td>
+              <td>28</td>
+            </tr>
+            <tr>
+              <td>1e-3</td>
+              <td>15</td>
+            </tr>
+            <tr>
+              <td>1e-4</td>
+              <td>28</td>
+            </tr>
+            <tr>
+              <td>1e-5</td>
+              <td>17</td>
+            </tr>
+            <tr>
+              <td>1e-6</td>
+              <td>46</td>
+            </tr>
+            <tr>
+              <td>1e-7</td>
+              <td>–</td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-md-3 text-center">
+          <h1>Layers</h1>
+          <p>Some experimentation was done in considering how many of which types of layers to use in the neural network. The following table shows the results of each variation:</p>
+          <table align="center">
+            <tr>
+              <th>Variation</th>
+              <th># Iters</th>
+            </tr>
+            <tr>
+              <th>1C, 1P, 1FC&nbsp;&nbsp;</th>
+              <th>14</th>
+            </tr>
+            <tr>
+              <th>2C, 2P, 1FC</th>
+              <th>25</th>
+            </tr>
+            <tr>
+              <th>2C, 2P, 2FC</th>
+              <th>15</th>
+            </tr>
+            <tr>
+              <th>3C, 3P, 1FC</th>
+              <th>16</th>
+            </tr>
+            <tr>
+              <th>3C, 3P, 2FC</th>
+              <th>13</th>
+            </tr>
+          </table>
+          <p class="caption">Key<br>C: Convolution Layer<br>P: Pooling Layer<br>FC: Fully Connected Layer</p>
+        </div>
       </div>
     </div>
 
