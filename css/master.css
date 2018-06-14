@@ -82,3 +82,7 @@ body {
   margin: 1.5vw 1.5vw 0 1.5vw;
   width: calc(100% - 3vw);
 }
+
+.plus {
+  margin-top: 8vw;
+}
