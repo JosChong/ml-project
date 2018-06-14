@@ -10,7 +10,7 @@
   <body>
 
     <div class="col-md-5 col-md-offset-1 text-right header">
-      <u><h1>Machine Learning & Video Games:</h1></u>
+      <u><h1>MACHINE LEARNING & VIDEO GAMES:</h1></u>
       <h2>Using Mouse Movement to Predict Game Genre</h2>
       <h3>Yoonsang Chong</h3>
       <h4>yoonsangchong2016@u.northwestern.edu</h4>
@@ -18,17 +18,17 @@
     </div>
 
     <div class="col-md-8 col-md-offset-3 intro">
-      <p><div class="tab">C</div>an a machine tell what type of game a person is playing, just given a visual representation of their in-game mouse movements? If so, it could signify a new avenue for gaming mouse software developers to explore, where a mouse can interact with a gamer with the same personalization and usefulness as other types of modern “smart” technology. An obvious initial usage would be for a mouse to automatically adjust its sensitivity as its user switches between different games, or between gaming and not gaming. This would enable seamless transitions between activities, and take the manual work off of users’ hands. But the possibilities go much beyond that; using movements to analyze play style, we might be able to help recommend games of similar "activeness," pinpoint specific areas for players to improve their skills, or offer developers a tool to assist them design gameplay mechanics and systems that reach their target audience.</p>
+      <p><div class="tab">C</div>an a machine tell what type of game a person is playing, just given a visual representation of their in-game mouse movements? If so, it could signify a new avenue for gaming mouse software developers to explore, where a mouse can interact with a gamer with the same personalization and usefulness as other types of modern “smart” technology. An obvious initial usage would be for a mouse to automatically adjust its sensitivity as its user switches between different games, or between gaming and not gaming. This would enable seamless transitions between activities, and take the manual work off of users’ hands. But the possibilities go much beyond that; using movements to analyze play style, we might be able to recommend games of similar "activeness," pinpoint specific areas for players to improve upon their skills, or offer developers a tool to help them design gameplay mechanics and systems that reach their target audience.</p>
     </div>
 
     <div class="col-md-12 black">
       <div class="col-md-5 col-md-offset-1">
         <p><div class="tab"></div>The initial hurdle to answering this question lay in which machine learning algorithm to use. Luckily, in the case of image classification, there is a popular option and for good reason: convolutional neural nets have been proven to be quite effective at recognizing patterns in images, even if the images at first may seem very different in terms of their underlying machine representation. The idea is to translate the images into 3-dimensional arrays of RGB values, then feed them into a convolutional neural network designed to output predictions of the images' labels.</p>
-        <p><div class="tab"></div>The resulting trained model turned out to be more effective than expected. When training on the three main genres of games on which data was collected (FPS, RTS, and card games), the network was capable of achieving near 100% accuracy in the task of distinguishing a particular genre from others with only several tens of examples. With some tuning of parameters, a near instant perfect accuracy could be achieved. However, a weakness of the model, or perhaps an oversight with regards to the task in general, arose when comparing other portions of the collected data. Certain genres, although strikingly different in gameplay, share almost identical patterns of movement, and the limited scope of the data prevented a further investigation into whether or not they could be classified effectively by a CNN.</p>
+        <p><div class="tab"></div>In some ways, the resulting trained model turned out to be more effective than expected. When training on the three main genres of games on which data was collected (FPS, RTS, and card games), the network was capable of achieving near 100% accuracy in the task of distinguishing a particular genre from others with only several tens of examples. With some tuning of parameters, a near instant perfect accuracy could be achieved. However, a weakness of the model, or perhaps an oversight concerning the task in general, arose when comparing other portions of the collected data. Certain genres, although strikingly different in gameplay, share almost identical patterns of movement, and the limited scope of the data prevented a further investigation into whether or not they could be classified effectively by a CNN.</p>
       </div>
       <div class="col-md-4 col-md-offset-1 text-center">
-        <img class="img" src="images/example.png">
-        <i><p class="caption">One of the examples that shows the result of tracking mouse movements in the real-time strategy game, Starcraft II.</p></i>
+        <img class="example-img" src="images/example.png">
+        <p class="caption">One of the examples that shows the result of tracking mouse movements in the real-time strategy game, StarCraft II.</p>
       </div>
     </div>
 
@@ -42,9 +42,69 @@
     <div class="col-md-12 black">
       <div class="col-md-5 col-md-offset-1 text-center">
         <p class="section-title">DATASET</p>
+        <p class="section-subtitle">GENERATION AND PREPROCESSING</p>
       </div>
       <div class="col-md-5">
-        <p><div class="tab"></div>The dataset is comprised of 400</p>
+        <p><div class="tab"></div>The dataset is comprised of just under 500 examples, with around 400 of them belonging to one of the 3 main genres between which the model showed high classification success: first-person shooter (FPS), real-time strategy (RTS), and card games. Although the original plan was to gather data on a wider range of genres, two issues arose that prevented that. First, the time cost of generating the data, even with several people assisting, proved to be a restricting factor when it came to how much experimentation could be done. But, at the same time, early observations revealed a possibility that was later corroborated by the gathered data: <i>genre differences are not all necessarily captured by mouse movement patterns</i>.</p>
+      </div>
+      <div class="col-md-5">
+        <p><div class="tab"></div>As can be seen in the example data points below, some genres, although they might seem very distinct to the players (see RTS & MOBA), are seemingly indistinguishable when only given their tracking data. This seemed like a fair supposition, so rather than to spend valuable resources on potentially trivial pursuits, future data generation was focused on the genres with which the model showed promise in preliminary testing. These genres each have unique characteristics in their mouse patterns, clear to the human eye, that can act as sources of predictive power when training a neural network.</p>
+      </div>
+    </div>
+
+    <div class="col-md-12 text-center inner-pad">
+      <div class="col-md-4">
+        <img class="img" src="images/card.png">
+        <p class="dark-caption">Hearthstone – Card Game</p>
+      </div>
+      <div class="col-md-4">
+        <img class="img" src="images/fps.png">
+        <p class="dark-caption">Overwatch – First-Person Shooter (FPS)</p>
+      </div>
+      <div class="col-md-4">
+        <img class="img" src="images/moba.png">
+        <p class="dark-caption">League of Legends – Massive Online Battle Arena (MOBA)</p>
+      </div>
+      <div class="col-md-4 col-md-offset-2">
+        <img class="img" src="images/rpg.png">
+        <p class="dark-caption">Diablo III – Top-Down Hack'n'Slash Role Playing Game (RPG)</p>
+      </div>
+      <div class="col-md-4">
+        <img class="img" src="images/rts.png">
+        <p class="dark-caption">StarCraft II – Real-Time Strategy (RTS)</p>
+      </div>
+    </div>
+
+    <div class="col-md-12 black">
+      <div class="col-md-5 col-md-offset-1">
+        <p><div class="tab"></div>The data was split into training, validation, and testing sets with a standard ratio of 80/20/20. Due to the small nature of the dataset, it is important to maximize the size of the training set so as to give the model as much information as possible to learn from. On the other hand, if the validation or testing sets are too small, it becomes difficult to assess the true growth and capabilities of the model. So, a standard ratio was employed to maintain a balance.</p>
+        <p><div class="tab"></div>Originally, the data was going to be used in its original 2560x1440 resolution form, however, the extreme memory costs quickly made that an unviable choice. So, the images, once loaded into tensorflow, were reshaped to a 10x magnitude smaller size of 256x144 – although really the data was actually in 3-dimensional arrays, with each pixel in the 246x144 space being represented by an array of length 3, specifying RGB values. This manipulation of the inputs enabled them to be used to train models, and given the accuracies of the predictive results, it likely did not have any significant trade off in terms of loss of potential information gain.</p>
+        <p><div class="tab"></div>The data was also all converted into B&W (as seen on the right) to check whether IOGraph’s (the program used to track the mouse movements) color scheme was influencing the capabilities of the model in any way. The findings seem to suggest that the impact is negligible. As when using the colored versions of the input images, it only took around 30 iterations of single-step single-example descent training for the model to achieve a 100% accuracy on the validation set.</p>
+      </div>
+      <div class="col-md-4 col-md-offset-1 text-center">
+        <img class="example-img" src="images/example-bw.png">
+        <p class="caption">An example of using thresholding to create a completely black & white variant of an image.</p>
+      </div>
+    </div>
+
+    <div class="col-md-12 inner-pad">
+      <div class="col-md-5 col-md-offset-1 text-center">
+        <p class="section-title">METHODS</p>
+        <p class="section-subtitle"></p>
+      </div>
+      <div class="col-md-5">
+        <p><div class="tab"></div>There was only one type of machine learning algorithm used, and that was a convolutional neural network written in Python using tensorflow. Because the model had to be created and tuned manually through code, it was a fairly time consuming process. However, there were plenty of parameters to manipulate given this approach, which left a fair amount of room for experimentation within this specific model. The results and analyses of this “learning process design” follows.</p>
+        <p><div class="tab"></div>One could presume that using a convolutional neural network to classify images of fixed sizes and fixed absolute anchors to which all movements are relative (the center of the screen) is unnecessary, as the strength of CNNs lay in their ability to detect patterns in different sections of images. But, the use of multilayer deep networks have more perks than simply being able to account for translation. The process of convolution and pooling means that small differences can be generalized to the same patterns, which is a useful feature for input data as volatile as mouse movement, where the exact angles at which the lines are made is anything but calculative.</p>
+      </div>
+    </div>
+
+    <div class="col-md-12 black">
+      <div class="col-md-5">
+
+      </div>
+      <div class="col-md-5 col-md-offset-1 text-center">
+        <p class="section-title">RESULTS</p>
+        <p class="section-subtitle">ANALYSIS & REFLECTION</p>
       </div>
     </div>
 
