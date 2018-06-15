@@ -79,7 +79,7 @@
       <div class="col-md-5 col-md-offset-1">
         <p><div class="tab"></div>The data was split into training, validation, and testing sets with a standard ratio of 80/20/20. Due to the small nature of the dataset, it is important to maximize the size of the training set so as to give the model as much information as possible to learn from. On the other hand, if the validation or testing sets are too small, it becomes difficult to track and assess the growth of the model. So, a standard ratio was employed to maintain a balance between the two.</p>
         <p><div class="tab"></div>Initially, the data was going to be used in its native 2560x1440 resolution form, however, the extreme memory costs quickly made that an unviable choice. So, the images, once loaded into tensorflow, were reshaped to a 10x magnitude smaller size of 256x144 – although really the data was actually stored in 3-dimensional arrays, with each pixel in a 246x144 space being represented by an array of length 3 that specifies the RGB values. This manipulation of the images enabled them to be used to train models with reasonable memory and time requirements, and given the accuracies of the predictive results, it likely did not have any significant trade off in terms of loss of potential information gain.</p>
-        <p><div class="tab"></div>The data was also all converted into B&W (as seen on the right) to check whether IOGraph’s (the program used to track the mouse movements) color scheme was influencing the capabilities of the model in any way. The findings seem to suggest that the impact is negligible. As when using the colored versions of the input images, it only took around 30 iterations of single-step single-example descent training for the model to achieve a 100% accuracy on the validation set.</p>
+        <p><div class="tab"></div>The data was also all converted into B&W (as seen on the right) to check whether IOGraph’s (the program used to track the mouse movements) color scheme was influencing the capabilities of the model in any way. The findings seem to suggest that the impact is minimal. As when using the colored versions of the input images, it only took around 25 iterations of single-step single-example descent training for the model to achieve a 100% accuracy on the validation set, 5 less than when using the colored input images.</p>
       </div>
       <div class="col-md-4 col-md-offset-1 text-center">
         <img class="example-img plus" src="images/example-bw.png">
@@ -93,7 +93,7 @@
         <p class="section-subtitle"></p>
       </div>
       <div class="col-md-5">
-        <p><div class="tab"></div>There was only one type of machine learning algorithm used, and that was a convolutional neural network written in Python using tensorflow. Because the model had to be created and tuned manually through code, it was a fairly time consuming process. However, there were plenty of parameters to manipulate given this approach, which left a fair amount of room for experimentation within this specific model. The results and analyses of this “learning process design" are detailed below.</p>
+        <p><div class="tab"></div>There was only one type of machine learning algorithm used, and that was a convolutional neural network, written in Python using tensorflow. Because the model had to be created and tuned manually through code, it was a fairly time consuming process. However, there were plenty of parameters to manipulate given this approach, which left a fair amount of room for experimentation within this specific model. The results and analyses of this “learning process design" are detailed below.</p>
         <p><div class="tab"></div>Also, one could presume that using a convolutional neural network to classify images of fixed sizes and fixed absolute anchors to which all movements are relative (the center of the screen) is unnecessary, as the strength of CNNs lay in their ability to detect patterns in different sections of images. But, the use of multilayer deep networks have more perks than simply being able to account for translation. The process of convolution and pooling means that small differences can be generalized to the same patterns, which is a useful feature for input data as volatile as mouse movement, where the exact angles at which the lines are made is anything but calculative and significant.</p>
       </div>
     </div>
@@ -108,22 +108,25 @@
 
       <div class="col-md-12">
         <div class="col-md-5 col-md-offset-1">
-          <p><div class="tab"></div>Originally, the biggest concern with regards to this task was potentially not having a large enough dataset to train an effective model. However, as noted, this was hardly the case. Using a convolutional neural network with 3 convolution layers, 3 pooling layers, and 2 fully connected layers between the inputs and output layer (not counting dropout and flattening layers), and utilizing batch gradient descent with a batch size of 10 examples and a step size also of 10 (the number of forward and backprop driven gradient update cycles per batch) over 50 iterations, the model can achieve over 95% validation accuracy off usually just a single batch. These fairly straightforward parameters for the model given the size and nature of the data seem to enable quick learning behavior, even with just a small number of examples.</p>
+          <p><div class="tab"></div>Originally, the biggest concern with regards to this task was potentially not having a large enough dataset to train an effective model. However, as noted, this was hardly the case. Using a convolutional neural network with 3 convolution layers, 3 pooling layers, and 2 fully connected layers between the inputs and output layer (not counting dropout and flattening layers), and utilizing batch gradient descent with a batch size of 10 examples and a step size also of 10 (the number of forward and backprop driven gradient update cycles per batch) over 50 iterations, the model can achieve over 95% validation set accuracy off usually just a single batch. These fairly straightforward parameters for the model given the size and nature of the data seem to enable quick learning behavior, even with just a small number of examples.</p>
         </div>
         <div class="col-md-5">
-          <p><div class="tab"></div>The stark differences between the mouse patterns of the focused genres are more effectively perceived and utilized by the algorithm than predicted, and this can be seen in the following graphs, which depict the growth of the model when training with various parameter configurations. Although using multiple example and multiple-step batch gradient descent trains the model more efficiently, the growth of the network's capabilities can be better observed when restricting the rate at which it can learn by using single-step descent on single example batches, which then allows one to better gauge the impact of changing other parameters. Even with this limitation, the network can still achieve 100% accuracy in the relatively short amount of time of about 30 to 40 iterations. The graphs are followed by a breakdown of some of the model's tunable parameters and their impact on the accuracy of the final result.</p>
+          <p><div class="tab"></div>The stark differences between the mouse patterns of the focused genres are more effectively perceived and utilized by the algorithm than predicted, and this can be seen in the following graphs, which depict the accuracy of the model when training with various parameter configurations. Although using multiple example and multiple-step batch gradient descent trains the model more efficiently, the growth of the network's capabilities can be better observed when restricting the rate at which it can learn by using single-step descent on single example batches, which then allows one to better gauge the impact of changing other parameters. Even with this limitation, the network can still achieve 100% accuracy in the relatively short amount of time of about 30 to 40 iterations. The graphs are followed by a breakdown of some of the model's tunable parameters and their impact on the accuracy of the final result.</p>
         </div>
       </div>
 
       <div class="col-md-10 col-md-offset-1 minus">
         <div class="col-md-4 text-center">
-          <img src="images/acc0.jpg">
+          <img src="images/acc1.png">
+          <p class="caption">Accuracy of the model as it trains on batches of size 1. Jagged appearance likely due to the small size of the validation set.</p>
         </div>
         <div class="col-md-4 text-center">
-          <img src="images/acc1.jpg">
+          <img src="images/acc10.png">
+          <p class="caption">Accuracy of the model as it trains on batches of size 10. Instant perfect validation set accuracy.</p>
         </div>
         <div class="col-md-4 text-center">
-          <img src="images/acc2.jpg">
+          <img src="images/loss10.png">
+          <p class="caption">Loss of the model as it trains on batches of size 10. A better way to track the growth of the model with batch size 10.</p>
         </div>
       </div>
 
@@ -138,7 +141,7 @@
         </div>
         <div class="col-md-3 text-center">
           <h1>Learning Rate</h1>
-          <p>The learning rate indicates how much significance the model assigns to the calculated batch gradients when using them to adjust its internal weights. The value of this parameter has a large effect on the model's success, as too high a value causes the network to attribute too much importance to new training examples, making it volatile and susceptible to outlier examples, while too low a value leaves the model unable to effectively learn from the data at all. The following table shows how many iterations of single example single-step optimization iterations are required to achieve 100% accuracy given a specific learning rate:</p>
+          <p>The learning rate indicates how much significance the model assigns to the calculated batch gradients when using them to adjust its internal weights. The value of this parameter has a large effect on the model's success, as too high a value causes the network to attribute too much importance to new training examples, making it volatile and susceptible to outlier examples, while too low a value leaves the model unable to effectively learn from the data at all. The following table shows how many iterations of single example single-step optimization iterations are required to achieve 100% validation accuracy given a particular learning rate:</p>
           <table align="center">
             <tr>
               <th>LR</th>
@@ -176,7 +179,7 @@
         </div>
         <div class="col-md-3 text-center">
           <h1>Layers</h1>
-          <p>Some experimentation was done in considering how many of which types of layers to use in the neural network. The following table shows the results of each variation:</p>
+          <p>Some experimentation was done in considering how many of which types of layers to use in the neural network. The following table shows the results of each variation using a learning rate of 1e-3 and a batch size and step of 1, by the number of training iterations it takes to reach 100% validaton accuracy:</p>
           <table align="center">
             <tr>
               <th>Variation</th>
