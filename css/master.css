@@ -73,6 +73,12 @@ body {
   margin-bottom: 3vw;
 }
 
+.section-title-small {
+  font-size: 4vw;
+  margin-top: 8vw;
+  margin-bottom: 4vw;
+}
+
 .section-subtitle {
   font-size: 2vw;
   margin-bottom: 12vw;
@@ -89,4 +95,8 @@ body {
 
 .minus {
   margin-top: 4vw;
+}
+
+.end {
+  margin-bottom: 4vw;
 }

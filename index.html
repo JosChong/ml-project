@@ -206,7 +206,17 @@
               <th>13</th>
             </tr>
           </table>
-          <p class="caption">Key<br>C: Convolution Layer<br>P: Pooling Layer<br>FC: Fully Connected Layer</p>
+          <p class="caption">C: Convolution Layer<br>P: Pooling Layer<br>FC: Fully Connected Layer</p>
+          <p>Interestingly, a relatively shallow network of 1 convolution layer, 1 pooling layer, and 1 fully connected layer performs remarkably well on this task. This is presumably because the 3 genres it is attempting to classify have distinct features that can be extracted with just a single layer of convolution, pooling and perceptrons.</p>
+        </div>
+      </div>
+
+      <div class="col-md-10 col-md-offset-1 end">
+        <div class="col-md-6 col-md-offset-3">
+          <p class="section-title-small text-center">FINAL THOUGHTS</p>
+        </div>
+        <div class="col-md-12">
+          <p><div class="tab"></div>Although a fairly effective model was ultimately created, it feels as if its extreme success is indicating that the refined variation of the initial task is too simple given the CNN's capabilities. Looking back, there is a lot that could have been done differently in an attempt to try and develop a more overarching model. For starters, the data collection process should have been preceded by a more comprehensive research phase with the aim of uncovering genres with more similar, but still distinguishable, mouse movements. This would have pushed the limits of the network further, resulting in a more capable, generalized model. Additionally, the impact of one of the aspects of the input examples, how much gameplay to count as a single "session" of the game, was not explored. This decision is directly correlated with how much significant information is stored in each image, which could potentially have affected how well the network learned from each one. However, the conclusion of this project is still clear: to some extent, machine learning is <i>absolutely</i> capable of determing the genre of a game based on its in-game mouse movements.</p>
         </div>
       </div>
     </div>
